@@ -1,0 +1,19 @@
+
+.header {
+    padding: 20px 0;
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-nav ul {
+    list-style: none;
+}
+.main-nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+.main-nav a {
+    margin-right: 10px;
+}

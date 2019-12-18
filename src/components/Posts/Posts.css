@@ -1,0 +1,19 @@
+.Post {
+    border: 2px solid;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.date {
+    font-size: 15px;
+    color: gray;
+}
+.Post-btn {
+    outline: none;
+    border: 2px solid;
+    cursor: pointer;
+    background-color: transparent;
+    box-shadow: 2px 2px 1px 1px black;
+    padding: 5px 15px;
+    font-size: 15px;
+}

@@ -1,0 +1,36 @@
+.container {
+    max-width: 962px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.Add {
+    border: 2px solid;
+    padding: 20px;
+}
+.label {
+    display: block;
+    margin: 0 0 10px 0;
+}
+.field {
+    width: 50%;
+    border: 2px solid;
+    padding: 5px 4px;
+    margin-bottom: 20px;
+}
+.textarea {
+    border: 2px solid;
+    width: 50%;
+    resize: none;
+    margin-bottom: 20px;
+    padding: 5px 4px;
+
+}
+.form-btn {
+    border: 2px solid;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 1px 1px black;
+    padding: 5px 20px;
+    font-size: 15px;
+}
