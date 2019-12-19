@@ -13,13 +13,6 @@ class Edit extends Component {
     async componentDidMount() {
         const response = await axiosPosts.get(this.getLink());
         this.setState({edit: response.data});
-
-
-
-
-
-
-
     }
     render() {
         return (
