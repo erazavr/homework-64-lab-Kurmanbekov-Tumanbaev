@@ -3,7 +3,7 @@ import Blog from "./container/Blog/Blog";
 import About from "./container/About/About";
 import Contacts from "./container/Contacts/Contacts";
 import Add from "./container/Add/Add";
-import Delete from "./container/Delete/Delete";
+import InfoOnePost from "./container/InfoOnePost/InfoOnePost";
 import Edit from "./container/Edit/Edit";
 import {BrowserRouter,Switch,Route} from "react-router-dom";
 const App = () => {
@@ -14,8 +14,8 @@ const App = () => {
                 <Route path='/About'  component={About}/>
                 <Route path='/Contacts'  component={Contacts}/>
                 <Route path='/Add'  component={Add}/>
-                <Route path='/posts/:id' component={Delete}/>
-                <Route path='/posts/:id/edit' component={Edit}/>
+                <Route path='/posts/:id/edit' exact component={Edit}/>
+                <Route path='/posts/:id' component={InfoOnePost}/>
                 <Route render={()=> <h1>Not found</h1>}/>
             </Switch>
         </BrowserRouter>

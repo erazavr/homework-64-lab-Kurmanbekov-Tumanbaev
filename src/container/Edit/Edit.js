@@ -4,22 +4,37 @@ import Header from "../../components/Header/Header";
 import axiosPosts from "../../axios-posts";
 class Edit extends Component {
     state = {
-        edit: null,
+        title: '',
+        description: '',
+        date: '',
     };
     getLink = () => {
         const id = this.props.match.params.id;
-        return  '/posts/' + id + 'edit.json'
+        return  '/posts/' + id + '.json'
     };
     async componentDidMount() {
         const response = await axiosPosts.get(this.getLink());
-        this.setState({edit: response.data});
+        this.setState({title: response.data.title, description: response.data.description, date: response.data.date,});
+
     }
+    valueChanged = event => this.setState({[event.target.name]: event.target.value});
+    postsHandler = async () => {
+        const posts = {
+            title: this.state.title,
+            description: this.state.description,
+            date:Date(),
+        };
+        await axiosPosts.put('/posts/' + this.props.match.params.id + '.json',posts);
+        this.props.history.push('/')
+    };
+
     render() {
-        return (
+
+        return this.state && (
             <Fragment>
                 <Header/>
                 <div className='Add container'>
-                    <h1>asdasdasda</h1>
+                    <h1>Edit</h1>
                     <div>
                         <label htmlFor="input" className='label'>Title</label>
                         <input
@@ -28,7 +43,8 @@ class Edit extends Component {
                             id='input'
                             className='field'
                             placeholder='Title'
-                            value={this.state.edit.title}
+                            value={this.state.title}
+                            onChange={this.valueChanged}
                         />
                     </div>
                     <div>
@@ -38,10 +54,11 @@ class Edit extends Component {
                             id="textarea" cols="30"
                             rows="10"
                             className='textarea'
-                            value={this.state.edit.description}
+                            value={this.state.description}
+                            onChange={this.valueChanged}
                         />
                     </div>
-                    <button className='btn'>Save Changes</button>
+                    <button className='btn' onClick={this.postsHandler}>Save Changes</button>
                 </div>
             </Fragment>
         );

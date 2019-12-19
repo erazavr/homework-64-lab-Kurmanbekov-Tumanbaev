@@ -23,13 +23,14 @@ class Blog extends Component {
                     clickHandler={() => this.readMore(id)}
                     key={id}
                     title={this.state.posts[id].title}
+                    date={this.state.posts[id].date}
                 />
             })
         }
         return (
             <div className='container'>
                 <Header/>
-                {this.state.posts!==null ? allPosts():<Spinner/>}
+                {this.state.posts!==null ? allPosts():<h1 style={{'textAlign': 'center'}}>No posts</h1>}
             </div>
         );
     }

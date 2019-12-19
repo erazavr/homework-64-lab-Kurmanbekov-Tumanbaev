@@ -15,6 +15,7 @@ class Add extends Component{
       const posts = {
               title: this.state.title,
               description: this.state.description,
+              date:Date(),
       };
       this.setState({loading: true})
       await axiosPosts.post('/posts.json',posts);
@@ -46,6 +47,7 @@ class Add extends Component{
                         rows="10"
                         className='textarea'
                         value={this.state.description}
+                        placeholder='Description'
                         onChange={this.valueChanged}
                     />
                 </div>
