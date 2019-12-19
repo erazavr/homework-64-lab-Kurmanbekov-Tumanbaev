@@ -11,23 +11,25 @@ class Add extends Component{
         title: '',
         description: '',
     };
-
     valueChanged = event => this.setState({[event.target.name]: event.target.value});
     postsHandler = async event => {
         event.preventDefault();
+        let date = new Date().getDate();
+        let month = new Date().getMonth() + 1;
+        let year = new Date().getFullYear();
+        let hours = new Date().getHours();
+        let min = new Date().getMinutes();
       const posts = {
               title: this.state.title,
               description: this.state.description,
-              date:Date(),
+              date:date + '.' + month + '.' + year + ' ' + hours + ':' + min,
       };
-
       this.setState({loading: true});
       await axiosPosts.post('/posts.json',posts);
       this.setState({loading: false});
       this.props.history.push('/')
 
     };
-
     render() {
         let form = (
             <form onSubmit={this.postsHandler}>

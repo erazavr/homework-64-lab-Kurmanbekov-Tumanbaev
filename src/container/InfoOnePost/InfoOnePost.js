@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import {NavLink} from "react-router-dom";
 class InfoOnePost extends Component {
     state  = {
-        some: null,
+        posts: null,
     };
     getLink = () => {
         const id = this.props.match.params.id;
@@ -13,7 +13,7 @@ class InfoOnePost extends Component {
     };
     async componentDidMount() {
         const response = await axiosPosts.get(this.getLink());
-        this.setState({some: response.data});
+        this.setState({posts: response.data});
     }
     postDelete = async () => {
         await axiosPosts.delete(this.getLink());
@@ -23,20 +23,20 @@ class InfoOnePost extends Component {
         this.props.history.push(`${this.props.match.params.id}/edit`);
     };
     render() {
-        return this.state.some && (
+        return this.state.posts && (
             <Fragment>
                 <Header/>
                 <div className='Add container'>
                     <div>
                         <h3>Title</h3>
-                        <p>{this.state.some.title}</p>
+                        <p>{this.state.posts.title}</p>
                     </div>
                     <div>
                        <h3>Description</h3>
-                       <p>{this.state.some.description}</p>
+                       <p>{this.state.posts.description}</p>
                     </div>
                     <button className='btn' onClick={this.postDelete}>Delete</button>
-                    <NavLink to={`/posts/${this.props.match.params.id}/edit`}>Edit</NavLink>
+                    <NavLink to={`/posts/${this.props.match.params.id}/edit`} className='btn'>Edit</NavLink>
                 </div>
             </Fragment>
         );

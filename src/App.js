@@ -6,7 +6,6 @@ import Add from "./container/Add/Add";
 import InfoOnePost from "./container/InfoOnePost/InfoOnePost";
 import Edit from "./container/Edit/Edit";
 import {BrowserRouter,Switch,Route} from "react-router-dom";
-
 const App = () => {
     return (
         <BrowserRouter>
@@ -17,10 +16,8 @@ const App = () => {
                 <Route path='/Add'  component={Add}/>
                 <Route path='/posts/:id/edit' exact component={Edit}/>
                 <Route path='/posts/:id' component={InfoOnePost}/>
-                <Route render={()=> <h1>Not found</h1>}/>
             </Switch>
         </BrowserRouter>
     );
 };
-
 export default App;

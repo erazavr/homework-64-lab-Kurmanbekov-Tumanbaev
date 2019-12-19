@@ -15,25 +15,28 @@ class Edit extends Component {
     async componentDidMount() {
         const response = await axiosPosts.get(this.getLink());
         this.setState({title: response.data.title, description: response.data.description, date: response.data.date,});
-
     }
     valueChanged = event => this.setState({[event.target.name]: event.target.value});
-    postsHandler = async () => {
+    postsHandler = async (e) => {
+        e.preventDefault();
+        let date = new Date().getDate();
+        let month = new Date().getMonth() + 1;
+        let year = new Date().getFullYear();
+        let hours = new Date().getHours();
+        let min = new Date().getMinutes();
         const posts = {
             title: this.state.title,
             description: this.state.description,
-            date:Date(),
+            date:date + '.' + month + '.' + year + ' ' + hours + ':' + min
         };
         await axiosPosts.put('/posts/' + this.props.match.params.id + '.json',posts);
         this.props.history.push('/')
     };
-
     render() {
-
         return this.state && (
             <Fragment>
                 <Header/>
-                <div className='Add container'>
+                <form className='Add container'  onSubmit={this.postsHandler}>
                     <h1>Edit</h1>
                     <div>
                         <label htmlFor="input" className='label'>Title</label>
@@ -58,8 +61,8 @@ class Edit extends Component {
                             onChange={this.valueChanged}
                         />
                     </div>
-                    <button className='btn' onClick={this.postsHandler}>Save Changes</button>
-                </div>
+                    <button className='btn'>Save Changes</button>
+                </form>
             </Fragment>
         );
     }
