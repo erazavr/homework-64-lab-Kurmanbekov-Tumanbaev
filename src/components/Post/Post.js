@@ -1,5 +1,6 @@
 import React from 'react';
-import './Post.css'
+import './Post.css';
+
 const Post = (props) => {
     return (
         <div className='Post'>

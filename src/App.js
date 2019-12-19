@@ -6,6 +6,7 @@ import Add from "./container/Add/Add";
 import InfoOnePost from "./container/InfoOnePost/InfoOnePost";
 import Edit from "./container/Edit/Edit";
 import {BrowserRouter,Switch,Route} from "react-router-dom";
+
 const App = () => {
     return (
         <BrowserRouter>

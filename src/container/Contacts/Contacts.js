@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import './Contacts.css';
 
 const Contacts = () => {
+
     return (
         <Fragment>
             <Header/>
@@ -19,7 +20,6 @@ const Contacts = () => {
                 </div>
             </div>
         </Fragment>
-
     );
 };
 
