@@ -1,5 +1,29 @@
 .Contacts {
-    text-align: center;
-    border: 2px solid;
-    margin: 10px;
+    display: flex;
+}
+.our-contacts {
+    background: url("contacts-img.jpg");
+    width: 535px;
+    height: 400px;
+}
+.our-contacts p {
+    color: red;
+    padding-left: 10px;
+}
+.info p {
+    font-size: 40px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: red;
+}
+.info span {
+    color: blue;
+}
+.txt-1 {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+    text-transform: none;
+    color: black;
 }

@@ -4,17 +4,15 @@ import axiosPosts from "../../axios-posts";
 import './Add.css'
 class Add extends Component{
     state = {
-        name: '',
+        title: '',
         description: '',
     };
     valueChanged = event => this.setState({[event.target.name]: event.target.value});
     postsHandler = async event => {
-        event.preventDefault()
+        event.preventDefault();
       const posts = {
-          post: {
-              name: this.state.name,
+              title: this.state.title,
               description: this.state.description,
-          }
       };
       await axiosPosts.post('/posts.json',posts);
         this.props.history.push('/')
@@ -33,11 +31,11 @@ class Add extends Component{
                             <label htmlFor="input" className='label'>Title</label>
                             <input
                                 type="text"
-                                name='name'
+                                name='title'
                                 id='input'
                                 className='field'
                                 placeholder='Title'
-                                value={this.state.name}
+                                value={this.state.title}
                                 onChange={this.valueChanged}
                             />
                         </div>
