@@ -1,14 +1,17 @@
 import React, {Component, Fragment} from 'react';
 import Header from "../../components/Header/Header";
 import axiosPosts from "../../axios-posts";
-import './Add.css'
+import './Add.css';
 import Spinner from "../../components/UI/Spinner/Spinner";
+
 class Add extends Component{
+
     state = {
         loading: false,
         title: '',
         description: '',
     };
+
     valueChanged = event => this.setState({[event.target.name]: event.target.value});
     postsHandler = async event => {
         event.preventDefault();
@@ -16,9 +19,10 @@ class Add extends Component{
               title: this.state.title,
               description: this.state.description,
       };
-      this.setState({loading: true})
+
+      this.setState({loading: true});
       await axiosPosts.post('/posts.json',posts);
-      this.setState({loading: false})
+      this.setState({loading: false});
       this.props.history.push('/')
 
     };

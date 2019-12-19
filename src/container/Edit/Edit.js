@@ -1,19 +1,24 @@
 import React, {Component, Fragment} from 'react';
-import './Edit.css'
+import './Edit.css';
 import Header from "../../components/Header/Header";
 import axiosPosts from "../../axios-posts";
+
 class Edit extends Component {
+
     state = {
         edit: null,
     };
+
     getLink = () => {
         const id = this.props.match.params.id;
         return  '/posts/' + id + 'edit.json'
     };
+
     async componentDidMount() {
         const response = await axiosPosts.get(this.getLink());
         this.setState({edit: response.data});
     }
+
     render() {
         return (
             <Fragment>
