@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import './Blog.css'
 import axiosPosts from "../../axios-posts";
 import Post from "../../components/Post/Post";
-
+import Spinner from "../../components/UI/Spinner/Spinner";
 class Blog extends Component {
     state = {
         posts: null,
@@ -29,7 +29,7 @@ class Blog extends Component {
         return (
             <div className='container'>
                 <Header/>
-                {this.state.posts!==null ? allPosts():<h3>NO POSTS</h3>}
+                {this.state.posts!==null ? allPosts():<Spinner/>}
             </div>
         );
     }

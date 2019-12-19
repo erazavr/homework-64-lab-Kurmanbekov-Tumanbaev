@@ -1,32 +1,32 @@
 import React, {Component, Fragment} from 'react';
-import './Edit.css'
-import Header from "../../components/Header/Header";
 import axiosPosts from "../../axios-posts";
-class Edit extends Component {
-    state = {
-        edit: null,
+import './Delete.css'
+import Header from "../../components/Header/Header";
+class Delete extends Component {
+    state  = {
+        some: null,
     };
     getLink = () => {
         const id = this.props.match.params.id;
-        return  '/posts/' + id + 'edit.json'
+        return  '/posts/' + id + '.json'
     };
     async componentDidMount() {
         const response = await axiosPosts.get(this.getLink());
-        this.setState({edit: response.data});
-
-
-
-
-
-
-
+        this.setState({some: response.data});
     }
+    postDelete = async () => {
+        await axiosPosts.delete(this.getLink());
+        this.props.history.replace('/');
+    };
+    edit = (id) => {
+        this.props.history.push(`/posts/${id}/edit`);
+        console.log(this.props.match);
+    };
     render() {
-        return (
+        return this.state.some && (
             <Fragment>
                 <Header/>
                 <div className='Add container'>
-                    <h1>asdasdasda</h1>
                     <div>
                         <label htmlFor="input" className='label'>Title</label>
                         <input
@@ -35,7 +35,7 @@ class Edit extends Component {
                             id='input'
                             className='field'
                             placeholder='Title'
-                            value={this.state.edit.title}
+                            value={this.state.some.title}
                         />
                     </div>
                     <div>
@@ -45,14 +45,15 @@ class Edit extends Component {
                             id="textarea" cols="30"
                             rows="10"
                             className='textarea'
-                            value={this.state.edit.description}
+                            value={this.state.some.description}
                         />
                     </div>
-                    <button className='btn'>Save Changes</button>
+                    <button className='btn' onClick={this.postDelete}>Delete</button>
+                    <button className='btn' onClick={()=> this.edit(this.props.match.params.id)}>Edit</button>
                 </div>
             </Fragment>
         );
     }
 }
 
-export default Edit;
+export default Delete;
